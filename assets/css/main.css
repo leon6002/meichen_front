@@ -1,0 +1,454 @@
+:root {
+  --select-border: #777;
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0px;
+  background-color: #f0f0f0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /* 解决ios端按钮按下时的闪烁效果 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.body-wrapper {
+  width: 1100px;
+  height: 800px;
+  border: 1px solid black;
+  box-sizing: content-box;
+  margin: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  column-gap: 5px;
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+}
+
+.header__signal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
+.header__signal img {
+  width: 25px;
+  height: 25px;
+}
+.filter-gray {
+  filter: grayscale(100%);
+}
+.header__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  margin: 0px;
+}
+.header__system-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__system-control-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  column-gap: 2px;
+  cursor: pointer;
+}
+.header__system-control-item img {
+  width: 40px;
+  height: 40px;
+}
+
+.main {
+  width: 100%;
+  height: calc(100% - 50px);
+}
+
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+  height: calc(100% - 40px);
+}
+
+.tab-header {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  height: 40px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-right: 2px;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.tab-button.active {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  position: relative;
+}
+
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #fff;
+}
+
+/* ---------- page grid layout start ---------- */
+.main__parent {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 1px;
+  grid-row-gap: 0px;
+  width: 100%;
+  height: 100%;
+}
+/* .main__parent > div {
+  border: 1px solid #ccc;
+  padding: 10px;
+} */
+.div1 {
+  grid-area: 1 / 1 / 4 / 5;
+}
+.div2 {
+  grid-area: 4 / 1 / 7 / 3;
+}
+.div3 {
+  grid-area: 1 / 5 / 4 / 7;
+}
+.div4 {
+  grid-area: 4 / 3 / 7 / 5;
+}
+.div5 {
+  grid-area: 4 / 5 / 7 / 7;
+}
+
+/* ---------- page grid layout end ---------- */
+
+/* ---------- custom grid layout start ---------- */
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.grid-2x2__div1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.grid-2x2__div2 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.grid-2x2__div3 {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.grid-2x2__div4 {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.grid-1x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.grid-1x2__div1 .grid-1x2__div2 {
+  grid-column: 1 / span 1;
+}
+
+/* ---------- custom grid layout end ---------- */
+
+.control-grid__button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  column-gap: 8px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2px;
+}
+.panel {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.graph {
+  height: 300px;
+  background-color: #000;
+}
+.status {
+  display: flex;
+  justify-content: space-between;
+}
+.controls {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+button {
+  padding: 5px;
+}
+.height-mode {
+  display: flex;
+  justify-content: space-between;
+}
+
+.height-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  column-gap: 2px;
+}
+.height-input input {
+  width: 50px;
+  margin-left: 2px;
+}
+.height-input img {
+  width: 25px;
+  height: 25px;
+}
+
+.system-status__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.system-status__console {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 200px;
+  width: 220px;
+  padding: 10px;
+}
+.system-status__console-title {
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  column-gap: 5px;
+}
+.system-status__console-title img {
+  width: 18px;
+  height: 18px;
+}
+
+.system-status__console-body {
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 200px;
+  padding: 8px 5px;
+  margin-top: 10px;
+  font-size: 11px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 300;
+  color: green;
+  overflow-x: scroll;
+}
+
+.variable-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.variable-item input {
+  width: 100px;
+  margin-left: 10px;
+}
+
+.chartWithOverlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.overlay {
+  padding: 4px;
+  position: absolute;
+  top: 10px; /* chartArea top  */
+  left: 50px; /* chartArea left */
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.overlay__item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  column-gap: 2px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.overlay__item img {
+  width: 15px;
+  height: 15px;
+}
+
+.layout {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chart-button-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  column-gap: 30px;
+}
+
+.variables-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  row-gap: 10px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.small-input {
+  width: 65px;
+}
+
+.pushable {
+  background: hsl(0, 0%, 48%);
+  border-radius: 5px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  outline-offset: 4px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+.front {
+  display: block;
+  padding: 4px 6px;
+  border-radius: 5px;
+  font-size: 11px;
+  background: hsl(0, 3%, 64%);
+  user-select: none;
+  color: white;
+  transform: translateY(-4px);
+  -webkit-transform: translateY(-4px);
+  -moz-transform: translateY(-4px);
+  -ms-transform: translateY(-4px);
+  -o-transform: translateY(-4px);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.pushable:active .front {
+  transform: translateY(-2px);
+}
+
+.pushable:disabled {
+  cursor: not-allowed; /* 改变鼠标样式 */
+  opacity: 0.5; /* 降低透明度 */
+  /* 你还可以添加其他样式，如改变背景颜色等 */
+}
+.pushable:disabled .front {
+  cursor: not-allowed;
+  /*改变鼠标样式*/
+  opacity: 0.5;
+  /*降低透明度*/
+  transform: translateY(0);
+  /* 你还可以添加其他样式，如改变背景颜色等 */
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
+
+.label-input__row-container {
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+}
+.label-input__row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 3px;
+  margin-top: 4px;
+}
+.label-input__item__container {
+  font-size: 11px;
+  flex: 1;
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+}
+
+/* .label-input__item__container input {
+  width: 50px;
+  height: 20px;
+  font-size: 10px;
+} */
+
+.label-input__item__container label {
+  word-wrap: break-word;
+}

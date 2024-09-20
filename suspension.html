@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/semantic.css" />
+    <link rel="stylesheet" href="./assets/css/suspension.css" />
+    <script type="text/javascript" src="./assets/js/pre-inlcude.js"></script>
+    <script language="JavaScript" type="text/javascript">
+      includeJSfiles();
+    </script>
+  </head>
+  <body>
+    <div class="main__parent">
+      <div id="chart-div-container" class="div1 border-wrapper"></div>
+      <div class="div2 border-wrapper p-2 flex flex-column gap-y-4">
+        <div class="grid-auto-fit">
+          <div>
+            <p class="height-input">
+              <img
+                id="img_PWM_FCE2_0_DW.pump_relay"
+                src="./assets/images/yellow-solid-circle.png"
+                style="opacity: 0%"
+              /><span>打气泵状态</span>
+            </p>
+          </div>
+          <div>
+            <div class="label-input__row">
+              <div class="flex gap-x-2">
+                <img
+                  id="img_TemperaWarm"
+                  src="./assets/images/thermometer.png"
+                  style="width: 18px; height: 40px; opacity: 0%"
+                />
+                <script>
+                  document.write(
+                    build_label_input_row_large("打气泵温度", "TempSensor")
+                  );
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="label-input__row">
+            <div class="flex gap-x-2">
+              <img
+                id="img_Detect_Tank"
+                src="./assets/images/gas-tank.png"
+                style="
+                  width: 60px;
+                  height: 40px;
+                  margin-right: 10px;
+                  opacity: 0%;
+                "
+              />
+              <script>
+                document.write(
+                  build_label_input_row_large(
+                    "储气罐气压",
+                    "Press_Tank",
+                    "Bar",
+                    {
+                      type: "text",
+                      value: "",
+                    }
+                  )
+                );
+              </script>
+            </div>
+          </div>
+        </div>
+
+        <div class="label-input__row-container" style="border: none">
+          <div class="label-input__row">
+            <div class="flex gap-x-2">
+              <img
+                id="img_Detect_FL"
+                src="./assets/images/green-solid-circle.png"
+                style="opacity: 0%; width: 20px; height: 20px"
+              />
+              <script>
+                document.write(
+                  build_label_input_row("FL压力", "Press_FL", "Bar", {
+                    type: "text",
+                    value: "",
+                  })
+                );
+              </script>
+            </div>
+            <div class="flex gap-x-2">
+              <img
+                id="img_Detect_FR"
+                src="./assets/images/green-solid-circle.png"
+                style="opacity: 0%; width: 20px; height: 20px"
+              />
+              <script>
+                document.write(
+                  build_label_input_row("FR压力", "Press_FR", "Bar", {
+                    type: "text",
+                    value: "",
+                  })
+                );
+              </script>
+            </div>
+          </div>
+          <div class="label-input__row">
+            <div class="flex gap-x-2">
+              <img
+                id="img_Detect_RL"
+                src="./assets/images/green-solid-circle.png"
+                style="opacity: 0%; width: 20px; height: 20px"
+              />
+              <script>
+                document.write(
+                  build_label_input_row("RL压力", "Press_RL", "Bar", {
+                    type: "text",
+                    value: "",
+                  })
+                );
+              </script>
+            </div>
+            <div class="flex gap-x-2">
+              <img
+                id="img_Detect_RR"
+                src="./assets/images/green-solid-circle.png"
+                style="opacity: 0%; width: 20px; height: 20px"
+              />
+              <script>
+                document.write(
+                  build_label_input_row("RR压力", "Press_RR", "Bar", {
+                    type: "text",
+                    value: "",
+                  })
+                );
+              </script>
+            </div>
+          </div>
+        </div>
+        <div class="grid-auto-fit m-t-4">
+          <div class="flex flex-column items-center">
+            <div style="font-size: small; text-align: center">气压检测</div>
+            <button
+              id="btn_PWM_FCE2_0_DW.Aerate_Tank"
+              class="pushable m-t-4"
+              ontouchstart
+              onclick="onAerateTankButtonClick()"
+            >
+              <span class="front">储气罐充气</span>
+            </button>
+          </div>
+          <div class="flex">
+            <div>
+              <div class="control-grid__button-row">
+                <button
+                  id="btn_Detect_FL"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onDetectTank('FL')"
+                >
+                  <span class="front">左前</span>
+                </button>
+                <button
+                  id="btn_Detect_FR"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onDetectTank('FR')"
+                >
+                  <span class="front">右前</span>
+                </button>
+              </div>
+              <div class="control-grid__button-row">
+                <button
+                  id="btn_Detect_RL"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onDetectTank('RL')"
+                >
+                  <span class="front">左后</span>
+                </button>
+                <button
+                  id="btn_Detect_RR"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onDetectTank('RR')"
+                >
+                  <span class="front">右后</span>
+                </button>
+              </div>
+              <div class="control-grid__button-row">
+                <button
+                  id="btn_Detect_Tank"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onDetectTank('Tank')"
+                >
+                  <span class="front">储气罐</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="div3 border-wrapper">
+        <div id="sys-info-module" slot="sys-info-module"></div>
+        <div>
+          <div
+            class="label-input__row-container"
+            style="border: none; margin-top: 20px"
+          >
+            <div class="label-input__row">
+              <script>
+                document.write(
+                  build_label_input_row("H1标准高度", "nom_height[0]", "毫米", {
+                    disabled: false,
+                  })
+                );
+                document.write(
+                  build_label_input_row("H3标准高度", "nom_height[2]", "毫米", {
+                    disabled: false,
+                  })
+                );
+              </script>
+            </div>
+            <div class="label-input__row">
+              <script>
+                document.write(
+                  build_label_input_row("H2标准高度", "nom_height[1]", "毫米", {
+                    disabled: false,
+                  })
+                );
+                document.write(
+                  build_label_input_row("H4标准高度", "nom_height[3]", "毫米", {
+                    disabled: false,
+                  })
+                );
+              </script>
+            </div>
+            <div class="label-input__row">
+              <script>
+                document.write(
+                  build_label_input_row(
+                    "辅助功能高度",
+                    "height_auxil",
+                    "毫米",
+                    {
+                      disabled: false,
+                    }
+                  )
+                );
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="div4 border-wrapper p-3">
+        <div style="margin: 10px 0">
+          <button
+            id="sus-manual-control-button"
+            class="pushable"
+            onclick="onManualControlBtnClick()"
+            ontouchstart
+          >
+            <span id="sus-manual-control-button-text" class="front"
+              >开启手动控制空气弹簧系统</span
+            >
+          </button>
+        </div>
+        <div class="flex justify-between">
+          <div class="flex flex-column gap-y-2">
+            <div>
+              <button
+                id="btn_PWM_FCE2_0_DW.H1_Calib"
+                class="pushable"
+                ontouchstart
+              >
+                <span class="front">H1标定保存</span>
+              </button>
+            </div>
+            <div>
+              <button
+                id="btn_PWM_FCE2_0_DW.H2_Calib"
+                class="pushable"
+                ontouchstart
+              >
+                <span class="front">H2标定保存</span>
+              </button>
+            </div>
+            <div>
+              <button
+                id="btn_PWM_FCE2_0_DW.H3_Calib"
+                class="pushable"
+                ontouchstart
+              >
+                <span class="front">H3标定保存</span>
+              </button>
+            </div>
+            <div>
+              <button
+                id="btn_PWM_FCE2_0_DW.H4_Calib"
+                class="pushable"
+                ontouchstart
+              >
+                <span class="front">H4标定保存</span>
+              </button>
+            </div>
+          </div>
+          <div id="height_control_wrapper">
+            <div class="control-grid__button-row">
+              <button id="FL_FR_UP" class="pushable" ontouchstart disabled>
+                <span class="front">前桥升</span>
+              </button>
+              <button id="FL_FR_DOWN" class="pushable" ontouchstart disabled>
+                <span class="front">前桥降</span>
+              </button>
+            </div>
+            <div class="control-grid__button-row">
+              <button id="FL_UP" class="pushable" ontouchstart disabled>
+                <span class="front">左前升</span>
+              </button>
+              <button id="FL_DOWN" class="pushable" ontouchstart disabled>
+                <span class="front">左前降</span>
+              </button>
+              <button id="FR_UP" class="pushable" ontouchstart disabled>
+                <span class="front">右前升</span>
+              </button>
+              <button id="FR_DOWN" class="pushable" ontouchstart disabled>
+                <span class="front">右前降</span>
+              </button>
+            </div>
+            <div class="control-grid__button-row">
+              <button id="RL_UP" class="pushable" ontouchstart disabled>
+                <span class="front">左后升</span>
+              </button>
+              <button id="RL_DOWN" class="pushable" ontouchstart disabled>
+                <span class="front">左后降</span>
+              </button>
+              <button id="RR_UP" class="pushable" ontouchstart disabled>
+                <span class="front">右后升</span>
+              </button>
+              <button id="RR_DOWN" class="pushable" ontouchstart disabled>
+                <span class="front">右后降</span>
+              </button>
+            </div>
+            <div class="control-grid__button-row">
+              <button id="RL_RR_UP" class="pushable" ontouchstart disabled>
+                <span class="front">后桥升</span>
+              </button>
+              <button id="RL_RR_DOWN" class="pushable" ontouchstart disabled>
+                <span class="front">后桥降</span>
+              </button>
+            </div>
+            <div class="control-grid__button-row">
+              <button id="all_up" class="pushable" ontouchstart disabled>
+                <span class="front">整车升</span>
+              </button>
+              <button id="all_down" class="pushable" ontouchstart disabled>
+                <span class="front">整车降</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="label-input__row-container"
+          style="border: none; margin-top: 20px"
+        >
+          <div class="label-input__row">
+            <script>
+              document.write(
+                build_label_input_row("FL标定高度", "heigh_Input[0]", "毫米", {
+                  disabled: false,
+                })
+              );
+              document.write(
+                build_label_input_row("FR标定高度", "heigh_Input[1]", "毫米", {
+                  disabled: false,
+                })
+              );
+            </script>
+          </div>
+          <div class="label-input__row">
+            <script>
+              document.write(
+                build_label_input_row("RL标定高度", "heigh_Input[2]", "毫米", {
+                  disabled: false,
+                })
+              );
+              document.write(
+                build_label_input_row("RR标定高度", "heigh_Input[3]", "毫米", {
+                  disabled: false,
+                })
+              );
+            </script>
+          </div>
+        </div>
+      </div>
+      <div class="div5 border-wrapper" style="padding: 0">
+        <div
+          class="label-input__row-container"
+          style="border-bottom: 1px solid black"
+        >
+          <div class="label-input__row">
+            <script>
+              document.write(
+                build_label_input_row(
+                  "空气弹簧高度变化冗余度",
+                  "Devia",
+                  "毫米",
+                  {
+                    disabled: false,
+                  }
+                )
+              );
+              document.write(
+                build_label_input_row("车身高度调整偏差", "Redund", "毫米", {
+                  disabled: false,
+                })
+              );
+            </script>
+          </div>
+          <div class="label-input__row">
+            <script>
+              document.write(
+                build_label_input_row("储气罐补气阈值", "L_pressure", "Bar", {
+                  disabled: false,
+                })
+              );
+              document.write(
+                build_label_input_row(
+                  "储气罐停止补气阈值",
+                  "H_pressure",
+                  "Bar",
+                  {
+                    disabled: false,
+                  }
+                )
+              );
+            </script>
+          </div>
+        </div>
+
+        <div
+          class="control-grid__button-row"
+          style="
+            padding: 8px;
+            width: 100%;
+            margin: 5px 0px;
+            border-bottom: 1px solid black;
+          "
+        >
+          <button id="btn_PWM_FCE2_0_DW.Level1" class="pushable" ontouchstart>
+            <span class="front">H1高度</span>
+          </button>
+          <button id="btn_PWM_FCE2_0_DW.Level2" class="pushable" ontouchstart>
+            <span class="front">H2高度</span>
+          </button>
+          <button id="btn_PWM_FCE2_0_DW.Level3" class="pushable" ontouchstart>
+            <span class="front">H3高度</span>
+          </button>
+          <button id="btn_PWM_FCE2_0_DW.Level4" class="pushable" ontouchstart>
+            <span class="front">H4高度</span>
+          </button>
+        </div>
+        <div class="" style="margin-top: 0px">
+          <div class="label-input__row">
+            <div class="flex gap-x-2 justify-center items-center">
+              <label for="standard-select" style="font-size: 11px"
+                >高度模式</label
+              >
+              <div class="select" style="font-size: 11px">
+                <select id="select_PWM_FCE2_0_DW.Modle_control">
+                  <option value="1">标准模式</option>
+                  <option value="2">运动模式</option>
+                  <option value="3">越野模式</option>
+                </select>
+                <span class="focus"></span>
+              </div>
+            </div>
+            <div class="flex gap-x-2 justify-center items-center">
+              <div class="label-input__row">
+                <script>
+                  document.write(
+                    build_label_input_row("当前高度等级", "test_levelOut", "", {
+                      type: "text",
+                    })
+                  );
+                </script>
+              </div>
+            </div>
+          </div>
+          <div class="label-input__row-container" style="border: none">
+            <div style="display: flex; column-gap: 2px">
+              <img
+                id="FL-height-img"
+                src="./assets/images/green-solid-circle.png"
+                style="opacity: 0; width: 20px; height: 20px"
+              />
+              <div class="label-input__row">
+                <script>
+                  document.write(
+                    build_label_input_row("FL实时高度", "hout[0]", "毫米")
+                  );
+                  document.write(
+                    build_label_input_row("FL标准高度", "sdh0", "毫米")
+                  );
+                </script>
+              </div>
+            </div>
+
+            <div style="display: flex; column-gap: 2px">
+              <img
+                id="FR-height-img"
+                src="./assets/images/green-solid-circle.png"
+                style="opacity: 0; width: 20px; height: 20px"
+              />
+              <div class="label-input__row">
+                <script>
+                  document.write(
+                    build_label_input_row("FR实时高度", "hout[1]", "毫米")
+                  );
+                  document.write(
+                    build_label_input_row("FR标准高度", "sdh1", "毫米")
+                  );
+                </script>
+              </div>
+            </div>
+            <div style="display: flex; column-gap: 2px">
+              <img
+                id="RL-height-img"
+                src="./assets/images/green-solid-circle.png"
+                style="opacity: 0; width: 20px; height: 20px"
+              />
+              <div class="label-input__row">
+                <script>
+                  document.write(
+                    build_label_input_row("RL实时高度", "hout[2]", "毫米")
+                  );
+                  document.write(
+                    build_label_input_row("RL标准高度", "sdh2", "毫米")
+                  );
+                </script>
+              </div>
+            </div>
+            <div style="display: flex; column-gap: 2px">
+              <img
+                id="RR-height-img"
+                src="./assets/images/green-solid-circle.png"
+                style="opacity: 0; width: 20px; height: 20px"
+              />
+              <div class="label-input__row">
+                <script>
+                  document.write(
+                    build_label_input_row("RR实时高度", "hout[3]", "毫米")
+                  );
+                  document.write(
+                    build_label_input_row("RR标准高度", "sdh3", "毫米")
+                  );
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+    <script type="text/javascript" src="./assets/js/suspension.js"></script>
+  </body>
+</html>

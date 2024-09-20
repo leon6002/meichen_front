@@ -1,0 +1,65 @@
+/* cdc tab style start */
+
+.cdc-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 2fr 2fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "cdc-graph cdc-graph cdc-graph cdc-graph cdc-status cdc-status"
+    "cdc-graph cdc-graph cdc-graph cdc-graph cdc-status cdc-status"
+    "cdc-graph cdc-graph cdc-graph cdc-graph cdc-status cdc-status"
+    "cdc-variables cdc-mode-standard cdc-mode-hard cdc-data cdc-data cdc-data"
+    "cdc-variables cdc-mode-soft cdc-mode-empty cdc-data cdc-data cdc-data";
+}
+
+.cdc-container > div {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.cdc-graph {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . .";
+  grid-area: cdc-graph;
+}
+
+.cdc-status {
+  grid-area: cdc-status;
+}
+
+.cdc-data {
+  grid-area: cdc-data;
+}
+
+.cdc-variables {
+  grid-area: cdc-variables;
+}
+
+.cdc-mode-standard {
+  grid-area: cdc-mode-standard;
+}
+
+.cdc-mode-hard {
+  grid-area: cdc-mode-hard;
+}
+
+.cdc-mode-soft {
+  grid-area: cdc-mode-soft;
+}
+
+.cdc-mode-empty {
+  grid-area: cdc-mode-empty;
+}
+
+/* cdc tab style end */

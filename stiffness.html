@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/semantic.css" />
+    <link rel="stylesheet" href="./assets/css/suspension.css" />
+    <script type="text/javascript" src="./assets/js/pre-inlcude.js"></script>
+    <script language="JavaScript" type="text/javascript">
+      includeJSfiles();
+    </script>
+  </head>
+  <body>
+    <div class="main__parent">
+      <div id="chart-div-container" class="div1 border-bottom border-right">
+      </div>
+      <div class="div2 border-right flex flex-column gap-y-4">
+        <div class="grid-1x2 size-full">
+          <div class="grid-1x2_div1 border-right p-2" style="overflow: scroll">
+            <div class="text-sub-title">刚度参数标定</div>
+            <div id="stiff-div2__stiff" class="flex flex-column gap-y-2">
+            </div>
+          </div>
+          <div class="grid-1x2_div1 p-2">
+            <div class="p-4">
+              <button
+                id="btn_AirValve_Control"
+                class="pushable"
+                ontouchstart
+                onclick="onCalibraAirValveBtnClick()"
+              >
+                <span class="front">空气阀控制电流与占空比对应关系标定</span>
+              </button>
+            </div>
+            <div>
+              <div class="label-input__row p-2" style="justify-items: center">
+                <script>
+                  document.write(
+                    build_label_input_row(
+                      "手动控制空气阀占空比",
+                      "PWM_FCE2_0_DW.AirValve_Control",
+                      "",
+                      {
+                        min: 0,
+                        max: 1,
+                        disabled: true,
+                      }
+                    )
+                  );
+                </script>
+              </div>
+              <p class="text-remark">
+                备注：该功能无法反馈电流大小，需要测试人员在空气阀上串联电流表检测电流大小
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="div3 border-bottom border-left">
+        <div id="sys-info-module" slot="sys-info-module"></div>
+      </div>
+      <div class="div4 p-3">
+        <div class="p-4 text-center">空气阀参数标定</div>
+        <div id="stiff-div4__air" class="label-input__row-container" style="row-gap: 20px">
+        </div>
+      </div>
+      <div class="div5 border-left">
+        <div class="size-full">
+          <div class="p-4 text-center m-4">
+            <button
+            id="btn_PWM_FCE2_0_DW.Test_AirValve"
+            class="pushable"
+            ontouchstart
+            onclick="onTestAirValveBtnClick()"
+          >
+            <span class="front">空气阀测试</span>
+          </button>
+          </div>
+          <div class="flex flex-column gap-y-2 justify-center items-center w-full">
+            <div class="label-input__row">
+              <div class="flex justify-center gap-x-2">
+                <img
+                  id="img_PWM_FCE2_0_DW.Manual_AirValve[0]"
+                  src="./assets/images/green-solid-circle.png"
+                  style="opacity: 0; width: 20px; height: 20px"
+                />
+                <button
+                  id="btn_PWM_FCE2_0_DW.Manual_AirValve[0]"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onManualAirValveBtnClick(0)"
+                >
+                  <span class="front">左前悬K1空气阀</span>
+                </button>
+              </div>
+              <div class="flex justify-center gap-x-2">
+                <img
+                  id="img_PWM_FCE2_0_DW.Manual_AirValve[1]"
+                  src="./assets/images/green-solid-circle.png"
+                  style="opacity: 0; width: 20px; height: 20px"
+                />
+                <button
+                  id="btn_PWM_FCE2_0_DW.Manual_AirValve[1]"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onManualAirValveBtnClick(1)"
+                >
+                  <span class="front">右前悬K1空气阀</span>
+                </button>
+              </div>
+            </div>
+            <div class="label-input__row">
+              <div class="flex justify-center gap-x-2">
+                <img
+                  id="img_PWM_FCE2_0_DW.Manual_AirValve[2]"
+                  src="./assets/images/green-solid-circle.png"
+                  style="opacity: 0; width: 20px; height: 20px"
+                />
+                <button
+                  id="btn_PWM_FCE2_0_DW.Manual_AirValve[2]"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onManualAirValveBtnClick(2)"
+                >
+                  <span class="front">左前悬K2空气阀</span>
+                </button>
+              </div>
+              <div class="flex justify-center gap-x-2">
+                <img
+                  id="img_PWM_FCE2_0_DW.Manual_AirValve[3]"
+                  src="./assets/images/green-solid-circle.png"
+                  style="opacity: 0; width: 20px; height: 20px"
+                />
+                <button
+                  id="btn_PWM_FCE2_0_DW.Manual_AirValve[3]"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onManualAirValveBtnClick(3)"
+                >
+                  <span class="front">右前悬K2空气阀</span>
+                </button>
+              </div>
+            </div>
+            <div class="label-input__row">
+              <div class="flex justify-center gap-x-2">
+                <img
+                  id="img_PWM_FCE2_0_DW.Manual_AirValve[4]"
+                  src="./assets/images/green-solid-circle.png"
+                  style="opacity: 0; width: 20px; height: 20px"
+                />
+                <button
+                  id="btn_PWM_FCE2_0_DW.Manual_AirValve[4]"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onManualAirValveBtnClick(4)"
+                >
+                  <span class="front">左后悬K1空气阀</span>
+                </button>
+              </div>
+              <div class="flex justify-center gap-x-2">
+                <img
+                  id="img_PWM_FCE2_0_DW.Manual_AirValve[5]"
+                  src="./assets/images/green-solid-circle.png"
+                  style="opacity: 0; width: 20px; height: 20px"
+                />
+                <button
+                  id="btn_PWM_FCE2_0_DW.Manual_AirValve[5]"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onManualAirValveBtnClick(5)"
+                >
+                  <span class="front">右后悬K1空气阀</span>
+                </button>
+              </div>
+            </div>
+            <div class="label-input__row">
+              <div class="flex justify-center gap-x-2">
+                <img
+                  id="img_PWM_FCE2_0_DW.Manual_AirValve[6]"
+                  src="./assets/images/green-solid-circle.png"
+                  style="opacity: 0; width: 20px; height: 20px"
+                />
+                <button
+                  id="btn_PWM_FCE2_0_DW.Manual_AirValve[6]"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onManualAirValveBtnClick(6)"
+                >
+                  <span class="front">左后悬K2空气阀</span>
+                </button>
+              </div>
+              <div class="flex justify-center gap-x-2">
+                <img
+                  id="img_PWM_FCE2_0_DW.Manual_AirValve[7]"
+                  src="./assets/images/green-solid-circle.png"
+                  style="opacity: 0; width: 20px; height: 20px"
+                />
+                <button
+                  id="btn_PWM_FCE2_0_DW.Manual_AirValve[7]"
+                  class="pushable"
+                  ontouchstart
+                  onclick="onManualAirValveBtnClick(7)"
+                >
+                  <span class="front">右后悬K2空气阀</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+    <script type="text/javascript" src="./assets/js/stiffness.js"></script>
+  </body>
+</html>

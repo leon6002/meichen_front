@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/semantic.css" />
+    <link rel="stylesheet" href="./assets/css/suspension.css" />
+    <script type="text/javascript" src="./assets/js/pre-inlcude.js"></script>
+    <script language="JavaScript" type="text/javascript">
+      includeJSfiles();
+    </script>
+  </head>
+  <body>
+    <div class="main__parent">
+      <div id="chart-div-container" class="div1">
+        <div class="grid-1x2 size-full">
+          <div class="grid-1x2_div1 p-4">
+            <div class="flex items-center justify-center m-t-4">
+              <div class="flex gap-x-2 justify-center items-center">
+                <label for="standard-select">高度模式</label>
+                <div class="select">
+                  <select id="select_PWM_FCE2_0_DW.Modle_control">
+                    <option value="1">标准模式</option>
+                    <option value="2">运动模式</option>
+                    <option value="3">越野模式</option>
+                  </select>
+                  <span class="focus"></span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="control-grid__button-row"
+              style="padding: 8px; margin-top: 50px; width: 100%"
+            >
+              <button
+                id="btn_PWM_FCE2_0_DW.Level1"
+                class="pushable"
+                ontouchstart
+              >
+                <span class="front">H1高度</span>
+              </button>
+              <button
+                id="btn_PWM_FCE2_0_DW.Level2"
+                class="pushable"
+                ontouchstart
+              >
+                <span class="front">H2高度</span>
+              </button>
+              <button
+                id="btn_PWM_FCE2_0_DW.Level3"
+                class="pushable"
+                ontouchstart
+              >
+                <span class="front">H3高度</span>
+              </button>
+              <button
+                id="btn_PWM_FCE2_0_DW.Level4"
+                class="pushable"
+                ontouchstart
+              >
+                <span class="front">H4高度</span>
+              </button>
+            </div>
+
+            <div class="flex items-center justify-center m-t-4">
+              <div class="flex gap-x-2 justify-center items-center">
+                <label for="standard-select">悬架软硬</label>
+                <div class="select">
+                  <select id="select_PWM_FCE2_0_DW.Mode_Damp">
+                    <option value="1">标准模式</option>
+                    <option value="2">硬模式</option>
+                    <option value="3">软模式</option>
+                  </select>
+                  <span class="focus"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-1x2_div2 size-full">
+            <div
+              class="size-full"
+              style="
+                display: flex;
+                flex-direction: column;
+                justify-content: left;
+                row-gap: 15px;
+                padding: 50px;
+                align-items: start;
+              "
+            >
+              <button
+                id="btn_Modle_usher"
+                class="pushable"
+                ontouchstart
+                onclick="onModeUserBtnClick()"
+              >
+                <span class="front">便捷上下车模式开关</span>
+              </button>
+              <button
+                id="btn_AirValve_Control"
+                class="pushable"
+                ontouchstart
+                onclick="onModeLoadBtnClick()"
+              >
+                <span class="front">便捷载物模式开关</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="div2 p-2 flex flex-column gap-y-4">
+        <div
+          class="size-full flex flex-column justify-start items-center gap-y-4"
+        >
+          <div>
+            <div class="">
+              <button
+                id="btn_AirValve_Control"
+                class="pushable"
+                ontouchstart
+                onclick="onServiceBtnClick(true)"
+              >
+                <span class="front">维修模式开</span>
+              </button>
+            </div>
+            <div class="m-t-4">
+              <button
+                id="btn_AirValve_Control"
+                class="pushable"
+                ontouchstart
+                onclick="onServiceBtnClick(false)"
+              >
+                <span class="front">维修模式关</span>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <div class="m-t-4">
+              <button
+                id="btn_AirValve_Control"
+                class="pushable"
+                ontouchstart
+                onclick="onJackBtnClick(true)"
+              >
+                <span class="front">千斤顶模式开</span>
+              </button>
+            </div>
+            <div class="m-t-4">
+              <button
+                id="btn_AirValve_Control"
+                class="pushable"
+                ontouchstart
+                onclick="onJackBtnClick(false)"
+              >
+                <span class="front">千斤顶模式关</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="div3">
+        <div id="sys-info-module" slot="sys-info-module"></div>
+      </div>
+      <div class="div4"></div>
+      <div class="div5">
+        <div
+          class="flex justify-center items-start gap-x-4"
+          style="margin: 20px"
+        >
+          <button
+            id="btn_start_save"
+            class="pushable"
+            ontouchstart
+            onclick="onSaveStartBtnClick()"
+          >
+            <span class="front">保存开始</span>
+          </button>
+          <button
+            id="btn_end_save"
+            class="pushable"
+            ontouchstart
+            onclick="onSaveEndBtnClick()"
+          >
+            <span class="front">保存结束</span>
+          </button>
+        </div>
+        <div
+          id="checkbox-select-all-container"
+          class="flex justify-center items-start gap-x-4"
+          style="margin: 20px"
+        >
+          <button
+            id="btn_select_all"
+            class="pushable"
+            ontouchstart
+            onclick="onSelectAllBtnClick(true)"
+          >
+            <span class="front">全选</span>
+          </button>
+          <button
+            id="btn_unselect_all"
+            class="pushable"
+            ontouchstart
+            onclick="onSelectAllBtnClick(false)"
+          >
+            <span class="front">取消全选</span>
+          </button>
+        </div>
+        <div id="checkbox-group">
+          <div class="flex gap-x-4">
+            <div class="">
+              <script>
+                document.write(buildCheckbox("IMU_XAxisDirA", "IMU_X_Acce"));
+                document.write(buildCheckbox("IMU_ZAxisDirA", "IMU_Z_Acce"));
+                document.write(buildCheckbox("IMU_RollRate", "IMU_RollRate"));
+                document.write(buildCheckbox("IMU_PitchRate", "IMU_PitchRate"));
+              </script>
+            </div>
+
+            <div>
+              <script>
+                document.write(buildCheckbox("FL_current", "FL_current"));
+                document.write(buildCheckbox("FR_current", "FR_current"));
+                document.write(buildCheckbox("RL_current", "RL_current"));
+                document.write(buildCheckbox("RR_current", "RR_current"));
+              </script>
+            </div>
+
+            <div>
+              <script>
+                document.write(buildCheckbox("PWM_FL_CDC", "FL_PWM"));
+                document.write(buildCheckbox("PWM_FR_CDC", "FR_PWM"));
+                document.write(buildCheckbox("PWM_RL_CDC", "RL_PWM"));
+                document.write(buildCheckbox("PWM_RR_CDC", "RR_PWM"));
+              </script>
+            </div>
+          </div>
+          <div class="flex gap-x-4 m-t-4">
+            <div>
+              <script>
+                document.write(buildCheckbox("speed", "车速"));
+                document.write(
+                  buildCheckbox("AccelerationPedalPosition", "加速踏板")
+                );
+                document.write(buildCheckbox("BrakePosition", "制动踏板"));
+                document.write(buildCheckbox("SteeringWheelAngle", "方向盘"));
+              </script>
+            </div>
+            <div>
+              <script>
+                document.write(buildCheckbox("hout[0]", "FL_实时高度"));
+                document.write(buildCheckbox("hout[1]", "FR_实时高度"));
+                document.write(buildCheckbox("hout[2]", "RL_实时高度"));
+                document.write(buildCheckbox("hout[3]", "RR_实时高度"));
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+    <script type="text/javascript" src="./assets/js/user-interact.js"></script>
+  </body>
+</html>

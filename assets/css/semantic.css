@@ -1,0 +1,204 @@
+.flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
+
+.gap-x-2 {
+  column-gap: 0.5rem; /* 8px */
+}
+.gap-x-4 {
+  column-gap: 1rem; /* 16px */
+}
+.gap-x-6 {
+  column-gap: 1.5rem; /* 24px */
+}
+.gap-y-2 {
+  row-gap: 0.5rem; /* 8px */
+}
+.gap-y-4 {
+  row-gap: 1rem; /* 16px */
+}
+.gap-y-6 {
+  row-gap: 1.5rem; /* 24px */
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.border-wrapper {
+  border: 1px solid black;
+}
+
+.border-y {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.border-x {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.border-left {
+  border-left: 1px solid black;
+}
+
+.border-bottom {
+  border-bottom: 1px solid black;
+}
+
+.border-top {
+  border-top: 1px solid black;
+}
+
+.border-right {
+  border-right: 1px solid black;
+}
+
+.size-full {
+  width: 100%;
+  height: 100%;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.p-2 {
+  padding: 8px;
+}
+
+.p-3 {
+  padding: 12px;
+}
+
+.p-4 {
+  padding: 16px;
+}
+
+.m-t-2 {
+  margin-top: 8px;
+}
+
+.m-t-4 {
+  margin-top: 16px;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.text-remark {
+  font-size: 12px; /* 字体大小为 12 像素 */
+  color: #999; /* 灰色文本颜色 */
+  font-style: italic; /* 斜体样式 */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-sub-title {
+  /* Define font styles, colors, etc. */
+  color: #333;
+  font-size: 1rem;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  z-index: 1;
+  outline: none;
+}
+select::-ms-expand {
+  display: none;
+}
+.select {
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  position: relative;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+.select select,
+.select::after {
+  grid-area: select;
+}
+.select:not(.select--multiple)::after {
+  content: "";
+  justify-self: end;
+  width: 0.8em;
+  height: 0.5em;
+  background-color: var(--select-arrow);
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+select:focus + .focus {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 2px solid var(--select-focus);
+  border-radius: inherit;
+}
+
+.select--disabled {
+  cursor: not-allowed;
+  background-color: #eee;
+  background-image: linear-gradient(to top, #ddd, #eee 33%);
+}

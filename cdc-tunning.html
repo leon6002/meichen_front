@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/semantic.css" />
+    <link rel="stylesheet" href="./assets/css/cdc.css" />
+    <script type="text/javascript" src="./assets/js/pre-inlcude.js"></script>
+    <script language="JavaScript" type="text/javascript">
+      includeJSfiles();
+    </script>
+  </head>
+  <body>
+    <div class="main__parent">
+      <div
+        id="chart-div-container"
+        class="div1 border-bottom border-right"
+      ></div>
+      <div class="div2 p-2 border-right">
+        <div class="size-full" style="overflow: scroll">
+          <div>通用参数标定</div>
+          <div class="">
+            <div id="cdc-div2-container" class="flex flex-column gap-y-2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="div3 border-bottom">
+        <div id="sys-info-module" slot="sys-info-module"></div>
+        <div>
+          <div
+            id="cdc-div3-container__damp-selector"
+            class="label-input__row-container"
+            style="border: none; margin-top: 20px"
+          ></div>
+        </div>
+      </div>
+      <div class="div4">
+        <div id="cdc-div4-container" class="grid-2x2 size-full">
+          <div class="grid-2x2__div1 border-right border-bottom p-2">
+            <div>标准模式</div>
+            <div
+              id="cdc-div4-container__standard"
+              class="flex flex-column gap-y-2 w-full"
+            ></div>
+          </div>
+          <div class="grid-2x2__div2 border-right border-bottom p-2">
+            <div>硬模式</div>
+            <div
+              id="cdc-div4-container__hard"
+              class="flex flex-column gap-y-2 w-full"
+            ></div>
+          </div>
+          <div class="grid-2x2__div3 border-right p-2">
+            <div>软模式</div>
+            <div
+              id="cdc-div4-container__soft"
+              class="flex flex-column gap-y-2 w-full"
+            ></div>
+          </div>
+          <div class="grid-2x2__div4 border-right"></div>
+        </div>
+      </div>
+      <div class="div5">
+        <div
+          id="cdc-div5-container"
+          class="size-full p-2"
+          style="overflow: scroll"
+        >
+          <div style="font-size: small">IMU数据</div>
+          <div
+            id="cdc-div5-container__imu"
+            class="flex flex-column gap-y-2"
+          ></div>
+          <hr />
+          <div style="font-size: small">CDC数据</div>
+          <div
+            id="cdc-div5-container__cdc"
+            class="flex flex-column gap-y-2"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./assets/js/main.js"></script>
+    <script type="text/javascript" src="./assets/js/cdc.js"></script>
+  </body>
+</html>

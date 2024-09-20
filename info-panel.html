@@ -1,0 +1,47 @@
+<templates>
+  <template id="sys-info-module">
+    <div
+      class="system-status__container"
+      style="border-bottom: 1px solid black"
+    >
+      <script type="text/javascrip" src="./assets/js/components.js"></script>
+      <div class="system-status__console">
+        <div class="system-status__console-title">
+          <span>系统运行状态</span
+          ><img id="system-status__img" src="./assets/images/red-alert.png" />
+        </div>
+        <div id="log-container" class="system-status__console-body">
+          <span></span>
+        </div>
+      </div>
+      <div
+        id="sys-info-input-group"
+        class="label-input__row-container"
+        style="border: none"
+      >
+        <div
+          id="sys-info-input-module-version"
+          class="text-remark"
+          style="font-size: 11px"
+        >
+          <label>版本号：</label>
+          <span>1.0</span>
+        </div>
+        <div id="sys-info-input-module-speed" class="label-input__row"></div>
+        <div id="sys-info-input-module-acce" class="label-input__row"></div>
+        <div id="sys-info-input-module-stop" class="label-input__row"></div>
+        <div id="sys-info-input-module-wheel" class="label-input__row"></div>
+        <div class="m-t-4">
+          <button
+            id="car-input-button"
+            class="pushable"
+            ontouchstart
+            onclick="onCarInputButton()"
+          >
+            <span class="front">手动输入</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </template>
+</templates>
